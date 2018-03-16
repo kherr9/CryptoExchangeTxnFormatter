@@ -28,6 +28,8 @@ namespace CryptoExchangeTxnFormatter.Tests
             Assert.Equal(new decimal(.493), head.CreditAmount);
             Assert.Equal("USD", head.FeeType);
             Assert.Equal(new decimal(-1.244825), head.FeeAmount);
+
+            var csv = new TransactionCsvSerializer().Serialize(target);
         }
     }
 }
