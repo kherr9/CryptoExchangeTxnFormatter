@@ -37,12 +37,9 @@ namespace CrytpoExchangeTxnFormatter.Application
             return new Transaction
             {
                 Timestamp = DateTime.SpecifyKind(reader.GetDateTime(header["Time (UTC)"]), DateTimeKind.Utc),
-                DebitType = "USD",
-                DebitAmount = new decimal(reader.GetDouble(header["USD Amount"])),
-                CreditType = "ETH",
-                CreditAmount = new decimal(reader.GetDouble(header["ETH Amount"])),
-                FeeType = "USD",
-                FeeAmount = new decimal(reader.GetDouble(header["Trading Fee (USD)"])),
+                Debit = new Money("USD", reader.GetDouble(header["USD Amount"])),
+                Credit = new Money("ETH", reader.GetDouble(header["ETH Amount"])),
+                Fee = new Money("USD", reader.GetDouble(header["Trading Fee (USD)"]))
             };
         }
 

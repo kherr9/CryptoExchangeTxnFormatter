@@ -6,16 +6,12 @@ namespace CrytpoExchangeTxnFormatter.Application
     {
         public DateTimeOffset Timestamp { get; set; }
 
-        public string DebitType { get; set; }
+        public Money Debit { get; set; }
 
-        public decimal DebitAmount { get; set; }
+        public Money Credit { get; set; }
 
-        public string CreditType { get; set; }
+        public Money Fee { get; set; }
 
-        public decimal CreditAmount { get; set; }
-
-        public string FeeType { get; set; }
-
-        public decimal FeeAmount { get; set; }
+        public Money ExchangeRate => new Money($"{Credit.Currency}/{Debit.Currency}", Math.Abs(Debit.Amount / Credit.Amount));
     }
 }

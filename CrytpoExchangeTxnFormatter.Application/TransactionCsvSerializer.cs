@@ -9,11 +9,11 @@ namespace CrytpoExchangeTxnFormatter.Application
         {
             var bldr = new StringBuilder();
 
-            bldr.AppendLine("Timestamp,Credit Type,Credit Amount,Debit Type,Debit Amount,Fee Type,Fee Amount");
+            bldr.AppendLine("Timestamp,Credit Currency,Credit Amount,Debit Currency,Debit Amount,Fee Currency,Fee Amount,Exchange Rate Currency,Exchange Rate Amount");
 
             foreach (var t in transactions)
             {
-                bldr.AppendLine($"{t.Timestamp:o},{t.CreditType},{t.CreditAmount},{t.DebitType},{t.DebitAmount},{t.FeeType},{t.FeeAmount}");
+                bldr.AppendLine($"{t.Timestamp:o},{t.Credit.Currency},{t.Credit.Amount},{t.Debit.Currency},{t.Debit.Amount},{t.Fee.Currency},{t.Fee.Amount},{t.ExchangeRate.Currency},{t.ExchangeRate.Amount}");
             }
 
             return bldr.ToString();
