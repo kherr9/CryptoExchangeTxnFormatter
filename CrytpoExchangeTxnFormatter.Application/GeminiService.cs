@@ -8,6 +8,10 @@ namespace CrytpoExchangeTxnFormatter.Application
     public class Transaction
     {
         public DateTimeOffset Timestamp { get; set; }
+
+        public string FeeType { get; set; }
+
+        public decimal FeeAmount { get; set; }
     }
 
     public class GeminiService
@@ -41,7 +45,9 @@ namespace CrytpoExchangeTxnFormatter.Application
         {
             return new Transaction
             {
-                Timestamp = DateTime.SpecifyKind(reader.GetDateTime(header["Time (UTC)"]), DateTimeKind.Utc)
+                Timestamp = DateTime.SpecifyKind(reader.GetDateTime(header["Time (UTC)"]), DateTimeKind.Utc),
+                FeeType = "USD",
+                FeeAmount = new decimal(reader.GetDouble(header["Trading Fee (USD)"]))
             };
         }
 

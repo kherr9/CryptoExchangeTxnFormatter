@@ -22,6 +22,8 @@ namespace CryptoExchangeTxnFormatter.Tests
             var head = target.First();
 
             Assert.Equal(new DateTimeOffset(2018, 1, 21, 20, 57, 44, 785, TimeSpan.Zero), head.Timestamp);
+            Assert.Equal("USD", head.FeeType);
+            Assert.Equal(new decimal(-1.244825), head.FeeAmount);
         }
     }
 }
