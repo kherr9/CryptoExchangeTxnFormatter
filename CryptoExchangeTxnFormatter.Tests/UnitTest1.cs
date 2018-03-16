@@ -21,7 +21,7 @@ namespace CryptoExchangeTxnFormatter.Tests
 
             var head = target.First();
 
-            Assert.Equal(new DateTimeOffset(2018, 1, 21, 20, 57, 44, 785, TimeSpan.Zero), head.Timestamp);
+            Assert.Equal(DateTime.Parse("2018/1/21 20:57:44.785Z"), head.Timestamp);
             Assert.Equal(new Money("USD", -497.93), head.Debit);
             Assert.Equal(new Money("ETH", .493), head.Credit);
             Assert.Equal(new Money("USD", -1.244825), head.Fee);
