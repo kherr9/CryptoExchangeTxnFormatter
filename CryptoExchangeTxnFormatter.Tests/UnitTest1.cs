@@ -22,10 +22,12 @@ namespace CryptoExchangeTxnFormatter.Tests
             var head = target.First();
 
             Assert.Equal(new DateTimeOffset(2018, 1, 21, 20, 57, 44, 785, TimeSpan.Zero), head.Timestamp);
-            Assert.Equal("USD", head.FeeType);
-            Assert.Equal(new decimal(-1.244825), head.FeeAmount);
             Assert.Equal("USD", head.DebitType);
             Assert.Equal(new decimal(-497.93), head.DebitAmount);
+            Assert.Equal("ETH", head.CreditType);
+            Assert.Equal(new decimal(.493), head.CreditAmount);
+            Assert.Equal("USD", head.FeeType);
+            Assert.Equal(new decimal(-1.244825), head.FeeAmount);
         }
     }
 }

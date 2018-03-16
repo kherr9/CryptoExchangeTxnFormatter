@@ -9,13 +9,17 @@ namespace CrytpoExchangeTxnFormatter.Application
     {
         public DateTimeOffset Timestamp { get; set; }
 
-        public string FeeType { get; set; }
-
-        public decimal FeeAmount { get; set; }
-
         public string DebitType { get; set; }
 
         public decimal DebitAmount { get; set; }
+
+        public string CreditType { get; set; }
+
+        public decimal CreditAmount { get; set; }
+
+        public string FeeType { get; set; }
+
+        public decimal FeeAmount { get; set; }
     }
 
     public class GeminiService
@@ -50,10 +54,12 @@ namespace CrytpoExchangeTxnFormatter.Application
             return new Transaction
             {
                 Timestamp = DateTime.SpecifyKind(reader.GetDateTime(header["Time (UTC)"]), DateTimeKind.Utc),
+                DebitType = "USD",
+                DebitAmount = new decimal(reader.GetDouble(header["USD Amount"])),
+                CreditType = "ETH",
+                CreditAmount = new decimal(reader.GetDouble(header["ETH Amount"])),
                 FeeType = "USD",
                 FeeAmount = new decimal(reader.GetDouble(header["Trading Fee (USD)"])),
-                DebitType = "USD",
-                DebitAmount = new decimal(reader.GetDouble(header["USD Amount"]))
             };
         }
 
