@@ -15,7 +15,7 @@ namespace CryptoExchangeTxnFormatter.Tests
 
             var source = File.OpenRead(@"C:\Users\kherr\Downloads\transaction_history.xlsx");
 
-            var target = new GeminiService().Convert(source).ToArray();
+            var target = new GeminiTransactionReader().Read(source).ToArray();
 
             Assert.Equal(11, target.Length);
 
