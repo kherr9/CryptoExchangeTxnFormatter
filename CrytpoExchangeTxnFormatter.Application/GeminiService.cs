@@ -16,8 +16,6 @@ namespace CrytpoExchangeTxnFormatter.Application
         {
             using (var reader = ExcelReaderFactory.CreateReader(source))
             {
-                reader.AsDataSet(new ExcelDataSetConfiguration() { UseColumnDataType = true });
-
                 if (reader.Name != "Account History")
                 {
                     throw new Exception($"Expected sheet name 'Account History', but got '{reader.Name}'.");
